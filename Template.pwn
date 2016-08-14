@@ -1,5 +1,6 @@
 #include <a_samp>
-#include <a_mysql>  
+#include <a_mysql> 
+#include <a_colors>
 #include <streamer>    
 #include <zcmd>
 #include <sscanf2>
@@ -8,30 +9,13 @@
 #include <YSI\y_timers>
 #include <YSI\y_utils>
 
-#include <YSI\y_hooks>
+main() { }
 
-/*
-	            Next Generation Gaming, LLC
-    (created by Next Generation Gaming Development Team)
-                    
-    Copyright (c) 2016, Next Generation Gaming, LLC
-    
-    All rights reserved.
-   
-    Redistribution and use in source and binary forms, with or without modification, are not permitted in any case.
+// 			Enums
 
-    ---------------------------
 
-    Project Name:
-    			(project name here)	
+//			Other Includes
 
-    Documentation:
-    			(gdoc link here)
-
-    Script Developers:
-    			Westen
-
-*/
 
 // 			Useful Functions
 
@@ -44,10 +28,10 @@
 native gpci(playerid, serial[], len = sizeof serial);
 
 
+//			MySQL
+
+
 //			Other Defines
-
-
-// 			Enums
 
 
 // 			Other Variables
@@ -62,13 +46,27 @@ stock GetPlayerGPCI(playerid)
     return szGPCI;
 }
 
+stock GetPlayerNameEx(playerid)
+{
+	new szName[MAX_PLAYER_NAME];
+	GetPlayerName(playerid, szName, MAX_PLAYER_NAME);
+
+	for(new i = 0; i < MAX_PLAYER_NAME) if(szName[i] == '_') szName[i] = ' ';
+
+	return szName;
+}
+
+stock GetPlayerName_(playerid)
+{
+	new szName[MAX_PLAYER_NAME];
+	GetPlayerName(playerid, szName, MAX_PLAYER_NAME);
+	return szName;
+}
+
 //          Callbacks & Hooks
 
 
 // 			Timers
-
-
-//			MySQL
 
 
 // 			Commands
